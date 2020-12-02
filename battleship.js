@@ -1,4 +1,4 @@
-var board = [
+let board = [
 [null, null, null, "S", null],
 [null, "S", null, "S", null],
 ["S", null, null, null, null],
@@ -6,19 +6,43 @@ var board = [
 [null, null, null, null, "S"],
 ];
 
-var firstRow = board[0];
-console.log("First Row: " + firstRow);
-
-var secondRow = board[1];
-console.log("Second Row: " +secondRow);
-
-var thirdRow = board[2];
-console.log("Third Row: " + thirdRow);
-
-var fourthRow = board[3];
-console.log("Fourth Row: " + thirdRow);
-
-var fifthRow = board[4];
-console.log("Fifth Row: " + thirdRow);
 
 
+for(i = 0; i < 100; i++){
+    let randRow = Math.floor(Math.random() * board.length);
+
+    let randCol = Math.floor(Math.random() * board[randRow].length);
+
+    let strike = board[randRow][randCol];
+
+    if(strike === "S"){
+        board[randRow][randCol] = null;
+    }
+
+    checkIfWin();
+
+
+}
+
+function checkIfWin(){
+
+    for (let c = 0; c < board.length; c++){
+
+        for(let r = 0; r < board[r].length; c++){
+            if(board[r][c] === "S"){
+                console.log("Next round");
+                return
+            }
+        }
+        winScreen();
+    }
+
+
+    
+}
+
+function winScreen(){
+    console.log("Good Job")
+
+
+}
